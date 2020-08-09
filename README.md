@@ -51,6 +51,6 @@ function animate() {
 }
 ```
 
-### Useful commands:
+### useful commands:
 * `$ npx webpack --watch`  
 * `$ git subtree push --prefix dist origin gh-pages`
