@@ -20,6 +20,10 @@ body {
   position: absolute;
 }
 
+#wireframe-text {
+  cursor: pointer;
+}
+
 /* https://codepen.io/sebj54/pen/shdHw */
 
 .dot, .dot:before, .dot:after {

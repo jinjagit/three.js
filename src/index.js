@@ -1,5 +1,5 @@
 import { ui } from './ui'
-import { testCube } from './testCube'
+
+let wire = false;
 
 ui();
-testCube();
