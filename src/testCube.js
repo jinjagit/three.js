@@ -10,9 +10,11 @@ const testCube = (() => {
     if (wire == false) {
       wire = true;
       line.material.opacity = 1.0;
+      mesh.material.opacity = 0.0;
     } else {
       wire = false;
       line.material.opacity = 0.0;
+      mesh.material.opacity = 1.0;
     }
     return wire;
   }
@@ -40,11 +42,10 @@ const testCube = (() => {
     material = new THREE.MeshNormalMaterial();
 
     mesh = new THREE.Mesh( geometry, material );
+    mesh.material.opacity = 1.0;
+    mesh.material.transparent = true;
 
     scene.add( mesh );
-
-    
-    //line.material.opacity = 0.25;
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setSize( window.innerWidth, window.innerHeight );
