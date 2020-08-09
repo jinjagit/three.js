@@ -1,3 +1,3 @@
-import { aModule } from './aModule'
+import { testCube } from './testCube'
 
-aModule();
+testCube();

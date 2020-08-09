@@ -1,6 +1,6 @@
 import * as THREE from '../js/three.module.js';
 
-const aModule = () => {
+const testCube = () => {
   var camera, scene, renderer;
   var geometry, material, mesh;
 
@@ -38,4 +38,4 @@ const aModule = () => {
   }
 };
 
-export { aModule }
+export { testCube }
