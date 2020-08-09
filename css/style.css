@@ -1,0 +1,13 @@
+body {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+.overlay {
+  background-color: #242627;
+  color: whitesmoke;
+  padding: 20px;
+  position: absolute;
+  top: 50px;
+  opacity: 0.5;
+  z-index: 5;
+}
