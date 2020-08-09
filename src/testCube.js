@@ -2,7 +2,7 @@ import * as THREE from '../js/three.module.js';
 
 const testCube = (() => {
   var camera, scene, renderer;
-  var geometry, line, material, mesh, wireframe;
+  var geometry, line, wireMaterial, meshMaterial, mesh, wireframe;
 
   let wire = false;
 
@@ -31,17 +31,18 @@ const testCube = (() => {
     geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
 
     wireframe = new THREE.WireframeGeometry( geometry );
+    wireMaterial = new THREE.LineBasicMaterial( { color: 0x80e5ff } );
 
-    line = new THREE.LineSegments( wireframe );
+    line = new THREE.LineSegments( wireframe, wireMaterial );
     line.material.depthTest = false;
     line.material.opacity = 0.0;
     line.material.transparent = true;
 
     scene.add( line );
 
-    material = new THREE.MeshNormalMaterial();
+    meshMaterial = new THREE.MeshNormalMaterial();
 
-    mesh = new THREE.Mesh( geometry, material );
+    mesh = new THREE.Mesh( geometry, meshMaterial );
     mesh.material.opacity = 1.0;
     mesh.material.transparent = true;
 
