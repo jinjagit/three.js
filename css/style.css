@@ -2,12 +2,59 @@ body {
   font-family: 'Ubuntu Mono', monospace;
 }
 
-.overlay {
+#overlay {
   background-color: #242627;
   color: whitesmoke;
   padding: 20px;
   position: absolute;
+  margin-left: 10px;
   top: 50px;
   opacity: 0.5;
   z-index: 5;
+}
+
+#overlay-toggle {
+  height: 50px;
+  width: 100px;
+  cursor: pointer;
+  position: absolute;
+}
+
+/* https://codepen.io/sebj54/pen/shdHw */
+
+.dot, .dot:before, .dot:after {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  background-color: rgb(70, 70, 70);
+}
+
+.dot {
+  top: 25px;
+  left: 50px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
+.dot:before, .dot:after {
+  content: "";
+}
+
+.dot:before {
+  right: 25px;
+  transition: right .3s ease-out;
+}
+
+.dot:after {
+  left: 25px;
+  transition: left .3s ease-out;
+}
+
+.dots:hover .dot:before {
+  right: -25px;
+}
+
+.dots:hover .dot:after {
+  left: -25px;
 }
