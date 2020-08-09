@@ -6,7 +6,7 @@ published at: https://jinjagit.github.io/three.js/
 * [three.js documentation ](https://threejs.org/docs/)  
 * [basic three.js tutorials](https://www.youtube.com/playlist?list=PLRtjMdoYXLf6mvjCmrltvsD0j12ZQDMfE)  
 
-### install in webpack project dir:
+### install in webpack node dir:
 `$ npm install --save three`
 
 ### test example (from Three.js github readme):
