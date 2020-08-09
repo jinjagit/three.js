@@ -2,12 +2,14 @@ import * as THREE from '../js/three.module.js';
 
 const testCube = () => {
   var camera, scene, renderer;
-  var geometry, material, mesh;
+  var geometry, material, mesh, wireframe;
 
-  init();
+  let wire = true;
+
+  init(wire);
   animate();
 
-  function init() {
+  function init(wire) {
 
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
     camera.position.z = 1;
@@ -15,9 +17,20 @@ const testCube = () => {
     scene = new THREE.Scene();
 
     geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
-    material = new THREE.MeshNormalMaterial();
 
-    mesh = new THREE.Mesh( geometry, material );
+    if (wire == true) {
+      wireframe = new THREE.WireframeGeometry( geometry );
+
+      mesh = new THREE.LineSegments( wireframe );
+      mesh.material.depthTest = false;
+      mesh.material.opacity = 0.25;
+      mesh.material.transparent = true;
+    } else {
+      material = new THREE.MeshNormalMaterial();
+
+      mesh = new THREE.Mesh( geometry, material );
+    }
+
     scene.add( mesh );
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );
