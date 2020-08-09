@@ -22,7 +22,7 @@ const testCube = (() => {
   init();
   animate();
 
-  function init(wire) {
+  function init() {
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
     camera.position.z = 0.5;
 
@@ -52,9 +52,7 @@ const testCube = (() => {
     document.body.appendChild( renderer.domElement );
   }
 
-
   function animate() {
-
     requestAnimationFrame( animate );
 
     mesh.rotation.x += 0.01;
