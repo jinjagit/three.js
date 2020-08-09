@@ -59,8 +59,10 @@ const testCube = (() => {
 
     mesh.rotation.x += 0.01;
     mesh.rotation.y += 0.02;
+    mesh.rotation.z += 0.015;
     line.rotation.x += 0.01;
     line.rotation.y += 0.02;
+    line.rotation.z += 0.015;
 
     renderer.render( scene, camera );
   }
