@@ -4,7 +4,7 @@ const testCube = () => {
   var camera, scene, renderer;
   var geometry, material, mesh, wireframe;
 
-  let wire = true;
+  let wire = false;
 
   init(wire);
   animate();
@@ -12,7 +12,7 @@ const testCube = () => {
   function init(wire) {
 
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
-    camera.position.z = 1;
+    camera.position.z = 0.5;
 
     scene = new THREE.Scene();
 
