@@ -8,16 +8,22 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // create the shape
-var geometry = new THREE.BoxGeometry(1, 1, 1);
+// Isocahedron: (radius, detail) detail 0 - 5, 6 iterations or more is a lot of vertices!
+var geometry = new THREE.IcosahedronGeometry(1, 3);
+
+//geometry.vertices[0] = new THREE.Vector3(-1.2, 1.5, 0);
+
+console.log(geometry.vertices);
 
 // create a material, color, or image texture
-var material = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: false});
+var material = new THREE.MeshNormalMaterial({color: 0xFFFFFF, wireframe: true});
 var cube = new THREE.Mesh(geometry, material);
+
 scene.add(cube);
 
 camera.position.z = 3;
 
-// game logic
+// scene logic
 var update = function() {
   cube.rotation.x += 0.0025;
   cube.rotation.y += 0.005;
@@ -28,7 +34,7 @@ var render = function() {
   renderer.render(scene, camera);
 };
 
-// run game loop (update, render, repeat)
+// run scene loop (update, render, repeat)
 var Gameloop = function() {
   requestAnimationFrame(Gameloop);
 
