@@ -2,6 +2,10 @@ body {
   font-family: 'Ubuntu Mono', monospace;
 }
 
+h1 {
+  font-size: 20px;
+}
+
 #overlay {
   background-color: #242627;
   color: whitesmoke;
