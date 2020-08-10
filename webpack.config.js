@@ -2,10 +2,12 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {cube: './src/cube.js',
+          tutorial: './src/tutorial.js'
+  },
   devtool: 'inline-source-map',
   output: {
-    filename: 'main.js',
+    filename: '[name]-bundle.js',
     path: path.resolve(__dirname, 'dist'),
   }
 };

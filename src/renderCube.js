@@ -1,6 +1,6 @@
 import * as THREE from '../js/three.module.js';
 
-const testCube = (() => {
+const renderCube = (() => {
   var camera, scene, renderer;
   var geometry, line, wireMaterial, meshMaterial, mesh, wireframe;
 
@@ -69,4 +69,4 @@ const testCube = (() => {
   return { toggleWire }
 })();
 
-export { testCube }
+export { renderCube }

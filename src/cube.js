@@ -1,6 +1,6 @@
-import { testCube } from './testCube'
+import { renderCube } from './renderCube'
 
-const ui = () => {
+const ui = (() => {
   function toggleOverlay(overlay) {
     if (window.getComputedStyle(overlay,null).getPropertyValue('display') == 'block') {
       overlay.style.display = "none";
@@ -10,7 +10,7 @@ const ui = () => {
   }
 
   function toggleWireframe(wireframeText) {
-    let wire = testCube.toggleWire();
+    let wire = renderCube.toggleWire();
     if (wire == true) {
       wireframeValue.innerHTML = "true";
       wireframeValue.style.color = "#99ff33";
@@ -35,6 +35,4 @@ const ui = () => {
   wireframeText.addEventListener("click", function() {
     toggleWireframe(wireframeText);
   });
-};
-
-export { ui }
+})();
