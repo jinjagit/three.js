@@ -24,7 +24,7 @@ const renderCube = (() => {
 
     geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
 
-    material = new THREE.MeshNormalMaterial({wireframe: false});
+    material = new THREE.MeshNormalMaterial();
 
     mesh = new THREE.Mesh( geometry, material );
     mesh.material.opacity = 1.0;
