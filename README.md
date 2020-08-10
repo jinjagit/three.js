@@ -53,4 +53,5 @@ function animate() {
 
 ### useful commands:
 * `$ npx webpack --watch`  
-* `$ git subtree push --prefix dist origin gh-pages`
+* `$ git subtree push --prefix dist origin gh-pages`  
+* `$ php -S 127.0.0.1:8080` (from `dist` dir, to serve `index.html` to http://127.0.0.1:8080/)  
