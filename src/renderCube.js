@@ -2,20 +2,14 @@ import * as THREE from '../js/three.module.js';
 
 const renderCube = (() => {
   var camera, scene, renderer;
-  var geometry, line, wireMaterial, meshMaterial, mesh, wireframe;
+  var geometry, material, mesh, wireframe;
 
   let wire = false;
 
   const toggleWire = () => {
-    if (wire == false) {
-      wire = true;
-      line.material.opacity = 1.0;
-      mesh.material.opacity = 0.0;
-    } else {
-      wire = false;
-      line.material.opacity = 0.0;
-      mesh.material.opacity = 1.0;
-    }
+    (wire == false) ? wire = true : wire = false;
+
+    mesh.material.wireframe = wire;
     return wire;
   }
 
@@ -30,19 +24,9 @@ const renderCube = (() => {
 
     geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
 
-    wireframe = new THREE.WireframeGeometry( geometry );
-    wireMaterial = new THREE.LineBasicMaterial( { color: 0x80e5ff } );
+    material = new THREE.MeshNormalMaterial({wireframe: false});
 
-    line = new THREE.LineSegments( wireframe, wireMaterial );
-    line.material.depthTest = false;
-    line.material.opacity = 0.0;
-    line.material.transparent = true;
-
-    scene.add( line );
-
-    meshMaterial = new THREE.MeshNormalMaterial();
-
-    mesh = new THREE.Mesh( geometry, meshMaterial );
+    mesh = new THREE.Mesh( geometry, material );
     mesh.material.opacity = 1.0;
     mesh.material.transparent = true;
 
@@ -56,12 +40,8 @@ const renderCube = (() => {
   function animate() {
     requestAnimationFrame( animate );
 
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
-    mesh.rotation.z += 0.015;
-    line.rotation.x += 0.01;
-    line.rotation.y += 0.02;
-    line.rotation.z += 0.015;
+    mesh.rotation.x += 0.005;
+    mesh.rotation.y += 0.01;
 
     renderer.render( scene, camera );
   }
