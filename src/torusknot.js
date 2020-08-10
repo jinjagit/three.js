@@ -15,7 +15,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Isocahedron: (radius, detail) detail 0 - 5, 6 iterations or more is a lot of vertices!
-var geometry = new THREE.IcosahedronGeometry(1, 3);
+var geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
 
 //geometry.vertices[0] = new THREE.Vector3(-1.2, 1.5, 0);
 
@@ -23,16 +23,16 @@ info();
 
 // create a material, color, or image texture
 var material = new THREE.MeshNormalMaterial({color: 0xFFFFFF, wireframe: true});
-var cube = new THREE.Mesh(geometry, material);
+var torus = new THREE.Mesh(geometry, material);
 
-scene.add(cube);
+scene.add(torus);
 
-camera.position.z = 3;
+camera.position.z = 35;
 
 // scene logic
 var update = function() {
-  cube.rotation.x += 0.0025;
-  cube.rotation.y += 0.005;
+  torus.rotation.x += 0.0025;
+  torus.rotation.y += 0.005;
 };
 
 // draw scene
