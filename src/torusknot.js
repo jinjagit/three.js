@@ -27,7 +27,7 @@ var torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
 
-camera.position.z = 35;
+camera.position.z = 40;
 
 // scene logic
 var update = function() {
