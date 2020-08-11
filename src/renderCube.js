@@ -1,4 +1,5 @@
-import * as THREE from '../js/three.module.js';
+import * as THREE from 'three/build/three.min.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const renderCube = (() => {
   var camera, scene, renderer;
@@ -41,6 +42,8 @@ const renderCube = (() => {
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setSize( win.width, win.height );
     document.body.appendChild( renderer.domElement );
+
+    const controls = new OrbitControls(camera, renderer.domElement);
 
     window.addEventListener('resize', function (){
       let win = windowDimensions();

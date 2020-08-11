@@ -1,4 +1,5 @@
-import * as THREE from '../js/three.module.js';
+import * as THREE from 'three/build/three.min.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const info = () => {
   console.log("vertices:");
@@ -26,6 +27,9 @@ window.addEventListener('resize', function (){
   camera.aspect = win.width / win.height;
   camera.updateProjectionMatrix();
 });
+
+const controls = new OrbitControls(camera, renderer.domElement);
+
 
 // Isocahedron: (radius, detail) detail 0 - 5, 6 iterations or more is a lot of vertices!
 var geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
