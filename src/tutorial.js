@@ -1,4 +1,4 @@
-import * as THREE from '../js/three.module.js';
+import * as THREE from '../js/three.min.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const info = () => {
