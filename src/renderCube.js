@@ -13,11 +13,17 @@ const renderCube = (() => {
     return wire;
   }
 
+  const windowDimensions = () => {
+    return {width: window.innerWidth, height: window.innerHeight};
+  };
+
   init();
   animate();
 
   function init() {
-    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
+    let win = windowDimensions();
+
+    camera = new THREE.PerspectiveCamera( 70, win.width / win.height, 0.01, 10 );
     camera.position.z = 0.5;
 
     scene = new THREE.Scene();
@@ -33,8 +39,15 @@ const renderCube = (() => {
     scene.add( mesh );
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( win.width, win.height );
     document.body.appendChild( renderer.domElement );
+
+    window.addEventListener('resize', function (){
+      let win = windowDimensions();
+      renderer.setSize(win.width, win.height);
+      camera.aspect = win.width / win.height;
+      camera.updateProjectionMatrix();
+    });
   }
 
   function animate() {

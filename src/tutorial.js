@@ -7,14 +7,27 @@ const info = () => {
   console.log(geometry.faces);
 };
 
+const windowDimensions = () => {
+  return {width: window.innerWidth, height: window.innerHeight};
+};
+
+let win = windowDimensions();
+
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+var camera = new THREE.PerspectiveCamera(75, win.width / win.height, 0.1, 1000 );
 
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(win.width, win.height);
 document.body.appendChild(renderer.domElement);
 
-// Isocahedron: (radius, detail) detail 0 - 5, 6 iterations or more is a lot of vertices!
+window.addEventListener('resize', function (){
+  let win = windowDimensions();
+  renderer.setSize(win.width, win.height);
+  camera.aspect = win.width / win.height;
+  camera.updateProjectionMatrix();
+});
+
+// Icosahedron: (radius, detail) detail 0 - 5, 6 iterations or more is a lot of vertices!
 var geometry = new THREE.IcosahedronGeometry(1, 3);
 
 //geometry.vertices[0] = new THREE.Vector3(-1.2, 1.5, 0);
@@ -22,7 +35,7 @@ var geometry = new THREE.IcosahedronGeometry(1, 3);
 info();
 
 // create a material, color, or image texture
-var material = new THREE.MeshNormalMaterial({color: 0xFFFFFF, wireframe: true});
+var material = new THREE.MeshNormalMaterial({wireframe: true});
 var cube = new THREE.Mesh(geometry, material);
 
 scene.add(cube);

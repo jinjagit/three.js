@@ -4,7 +4,8 @@ published at: https://jinjagit.github.io/three.js/
 
 * [three.js on github](https://github.com/mrdoob/three.js/)  
 * [three.js documentation ](https://threejs.org/docs/)  
-* [basic three.js tutorials](https://www.youtube.com/playlist?list=PLRtjMdoYXLf6mvjCmrltvsD0j12ZQDMfE)  
+* [basic three.js tutorials](https://www.youtube.com/playlist?list=PLRtjMdoYXLf6mvjCmrltvsD0j12ZQDMfE) 
+* [nice perlin noise example](https://codepen.io/ya7gisa0/pen/vGJvWw)  
 
 ### install in webpack node dir:
 `$ npm install --save three`

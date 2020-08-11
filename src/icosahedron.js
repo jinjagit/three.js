@@ -7,12 +7,25 @@ const info = () => {
   console.log(geometry.faces);
 };
 
+const windowDimensions = () => {
+  return {width: window.innerWidth, height: window.innerHeight};
+};
+
+let win = windowDimensions();
+
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+var camera = new THREE.PerspectiveCamera(75, win.width / win.height, 0.1, 1000 );
 
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(win.width, win.height);
 document.body.appendChild(renderer.domElement);
+
+window.addEventListener('resize', function (){
+  let win = windowDimensions();
+  renderer.setSize(win.width, win.height);
+  camera.aspect = win.width / win.height;
+  camera.updateProjectionMatrix();
+});
 
 // Icosahedron: (radius, detail) detail 0 - 5, 6 iterations or more is a lot of vertices!
 var geometry = new THREE.IcosahedronGeometry(1, 3);
