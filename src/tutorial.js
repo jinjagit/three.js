@@ -30,20 +30,30 @@ window.addEventListener('resize', function (){
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-// Icosahedron: (radius, detail) detail 0 - 5, 6 iterations or more is a lot of vertices!
-var geometry = new THREE.IcosahedronGeometry(1, 3);
+var geometry = new THREE.BoxGeometry(1, 1, 1);
 
 //geometry.vertices[0] = new THREE.Vector3(-1.2, 1.5, 0);
 
 info();
 
+var cubeMaterials =
+[
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/pat1.png'), side: THREE.DoubleSide}), // right side
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/pat2.png'), side: THREE.DoubleSide}), // left side
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/pat3.png'), side: THREE.DoubleSide}), // top side
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/pat4.png'), side: THREE.DoubleSide}), // bottom side
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/pat5.png'), side: THREE.DoubleSide}), // front side
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/pat6.png'), side: THREE.DoubleSide})  // back side
+];
+
 // create a material, color, or image texture
-var material = new THREE.MeshNormalMaterial({wireframe: true});
-var cube = new THREE.Mesh(geometry, material);
+// MeshFaceMaterials deprecated? https://stackoverflow.com/questions/45429660/three-multimaterial-has-been-removed-use-an-array-instead
+//var material = new THREE.MeshFaceMaterial(cubeMaterials);
+var cube = new THREE.Mesh(geometry, cubeMaterials);
 
 scene.add(cube);
 
-camera.position.z = 3;
+camera.position.z = 2;
 
 // scene logic
 var update = function() {
