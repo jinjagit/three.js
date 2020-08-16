@@ -6,6 +6,7 @@ published at: https://jinjagit.github.io/three.js/
 * [three.js documentation ](https://threejs.org/docs/)  
 * [basic three.js tutorials](https://www.youtube.com/playlist?list=PLRtjMdoYXLf6mvjCmrltvsD0j12ZQDMfE) 
 * [nice perlin noise example](https://codepen.io/ya7gisa0/pen/vGJvWw)  
+* [discussion of smooth shading & normals](https://stackoverflow.com/questions/43624693/computevertexnormals-doesnt-work-with-model-from-jsonloader)  
 
 ### install in webpack node dir:
 `$ npm install --save three`
