@@ -19,7 +19,7 @@ let win = windowDimensions();
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, win.width / win.height, 0.1, 1000 );
 
-var renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer({ antialias: true });;
 renderer.setSize(win.width, win.height);
 document.body.appendChild(renderer.domElement);
 
@@ -33,13 +33,14 @@ window.addEventListener('resize', function (){
 const controls = new OrbitControls(camera, renderer.domElement);
 
 // Icosahedron: (radius, detail) detail 0 - 5, 6 iterations or more is a lot of vertices!
-var geometry = new THREE.IcosahedronGeometry(1, 0);
+var geometry = new THREE.IcosahedronGeometry(1, 1);
 
 //geometry.vertices[0] = new THREE.Vector3(-1.2, 1.5, 0);
 
 
 
 var material = new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/pat4.png'), side: THREE.DoubleSide, flatShading: false});
+//var material = new THREE.MeshLambertMaterial(0xff6699);
 
 var materials = [];
 
