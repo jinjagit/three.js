@@ -6,6 +6,8 @@ const info = () => {
   console.log(geometry.vertices);
   console.log("faces:");
   console.log(geometry.faces);
+  console.log("materials:");
+  console.log(materials);
 };
 
 const windowDimensions = () => {
@@ -31,19 +33,58 @@ window.addEventListener('resize', function (){
 const controls = new OrbitControls(camera, renderer.domElement);
 
 // Icosahedron: (radius, detail) detail 0 - 5, 6 iterations or more is a lot of vertices!
-var geometry = new THREE.IcosahedronGeometry(1, 3);
+var geometry = new THREE.IcosahedronGeometry(1, 0);
 
 //geometry.vertices[0] = new THREE.Vector3(-1.2, 1.5, 0);
 
+
+
+var material = new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/pat4.png'), side: THREE.DoubleSide, flatShading: false});
+
+var materials = [];
+
+geometry.faceVertexUvs[0] = [];
+for(var i = 0; i < geometry.faces.length; i++){      
+  geometry.faceVertexUvs[0].push([
+  new THREE.Vector2( 0,0 ),
+  new THREE.Vector2( 0,1 ),
+  new THREE.Vector2( 1,1),
+  ]);
+
+  geometry.faces[i].materialIndex = i;
+  materials.push(material);
+}
+
 info();
 
+geometry.computeFaceNormals();
+geometry.dynamic = true;
+geometry.uvsNeedUpdate = true;
+
 // create a material, color, or image texture
-var material = new THREE.MeshNormalMaterial({color: 0xFFFFFF, wireframe: true});
-var icosahedron = new THREE.Mesh(geometry, material);
+var icosahedron = new THREE.Mesh(geometry, materials);
+
+icosahedron.material.flatShading = false;
+
+
+icosahedron.geometry.computeVertexNormals(true);
+icosahedron.material.shading = THREE.SmoothShading;
 
 scene.add(icosahedron);
 
 camera.position.z = 3;
+
+// lighting
+var ambientLight = new THREE.AmbientLight(0x66ccff, 0.15);
+scene.add(ambientLight);
+
+var directionalLight = new THREE.DirectionalLight(0x66ccff, 1.0);
+directionalLight.position.set(1, 1, 0.5);
+scene.add(directionalLight);
+
+var directionalLight2 = new THREE.DirectionalLight(0xff6699, 0.1);
+directionalLight2.position.set(-1, -1, 0.5);
+scene.add(directionalLight2);
 
 // scene logic
 var update = function() {
